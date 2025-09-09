@@ -49,7 +49,7 @@ st.markdown(page_bg, unsafe_allow_html=True)
 
 # ====== Judul ======
 st.title("✨ Spesial Untuk Zalfa si Paling Suka Tebak-Tebakan ✨")
-st.write("Allooo Zalfa, aku punya game tebak-tebakan manis buat kamu. Coba jawab ya, aku kasih clue satu per satu 😉")
+st.write("Allooo Zalfa, aku punya game tebak-tebakan buat kamu. Coba jawab ya, aku kasih clue satu per satu 😉")
 
 # ====== Daftar Tebakan ======
 tebakan_list = [
@@ -141,3 +141,4 @@ else:
         """,
         unsafe_allow_html=True
     )
+

@@ -74,7 +74,7 @@ tebakan_list = [
      "blue", "Iyaa, Blue kucing kesayangan kamu😺, btw namanya grey ngga si harusnyaa -_-"),
 
     ("Aku bikin perih, bikin sakit, tapi juga bukti kamu kuat bisa bangkit lagi. Aku apa?",
-     "luka", " yapp bener, hayoo Siapa yg kemaren abiss jatohh? Orang ko hobinya jatoh, but anyway GWS YAAA..💪"),
+     "luka", "yapp bener, hayoo Siapa yg kemaren abiss jatohh? Orang ko hobinya jatoh, but anyway GWS YAAA..💪"),
 
     ("Aku datang diam-diam, bikin hati berat, kadang bikin air mata jatuh. Aku siapa?",
      "sedih", "True, tapi inget Zalfa, aku selalu ada buat bikin kamu bahagia lagii 😊, ahahahh candaa"),
@@ -104,9 +104,10 @@ total = len(tebakan_list)
 if index < total:
     pertanyaan, jawaban, respon = tebakan_list[index]
 
-    # Progress bar
+    # Progress bar + caption
     progress = int((index / total) * 100)
-    st.progress(progress, text=f"Progress: {index}/{total} pertanyaan selesai")
+    st.progress(progress)
+    st.caption(f"Progress: {index}/{total} pertanyaan selesai")
 
     # Pertanyaan dalam card + fade-in animasi
     st.markdown(
@@ -126,19 +127,18 @@ if index < total:
         if jawaban_input.strip().lower() == jawaban:
             st.success(respon)
             st.session_state.score += 1
-            st.session_state.answered = True   # tandai sudah benar
+            st.session_state.answered = True
         else:
-            st.error("TETOTTT!!! Salahh 😅 coba lagi ya!")  
-            st.session_state.answered = False  # masih salah
+            st.error("TETOTTT!!! Salahh 😅 coba lagi ya!")
+            st.session_state.answered = False
 
     # Tombol next hanya aktif kalau jawaban sudah benar
     if st.session_state.answered:
         if st.button("➡️ Next"):
             st.session_state.index += 1
-            st.session_state.answered = False  # reset untuk soal berikut
+            st.session_state.answered = False
 
 else:
-
     # Generate bintang statis
     NUM_STARS = 120
     shadows = []
@@ -151,18 +151,18 @@ else:
 
     box_shadow_css = ",\n            ".join(shadows)
 
-    night_bg = f"""
+    night_bg_template = """
     <style>
-    .stApp {{
+    .stApp {
         position: relative;
         background: linear-gradient(to bottom, #0d1b2a, #1b263b, #0d1b2a);
         color: #ffffff;
         font-family: "Segoe UI", sans-serif;
         overflow: hidden;
-    }}
+    }
 
-    /* Aurora lebih jelas di bagian atas */
-    .aurora {{
+    /* Aurora */
+    .aurora {
         content: "";
         position: fixed;
         top: 0;
@@ -177,23 +177,23 @@ else:
         );
         background-size: 400% 400%;
         animation: aurora 18s ease-in-out infinite;
-        z-index: -2; /* lebih rendah dari balon */
-    }}
+        z-index: -2;
+    }
 
-    @keyframes aurora {{
-        0%   {{ background-position: 0% 50%; }}
-        50%  {{ background-position: 100% 50%; }}
-        100% {{ background-position: 0% 50%; }}
-    }}
+    @keyframes aurora {
+        0%   { background-position: 0% 50%; }
+        50%  { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
     /* Pastikan konten tetap di atas */
-    .stApp > div {{
+    .stApp > div {
         position: relative;
         z-index: 1;
-    }}
+    }
 
     /* Bintang */
-    .stars {{
+    .stars {
         position: fixed;
         top: 0;
         left: 0;
@@ -204,11 +204,11 @@ else:
         box-shadow: {box_shadow_css};
         filter: blur(0.2px);
         opacity: 0.95;
-        z-index: -2; /* lebih rendah dari balon */
-    }}
+        z-index: -2;
+    }
 
     /* Bulan */
-    .moon {{
+    .moon {
         width: 120px;
         height: 120px;
         background: radial-gradient(circle at 30% 30%, #fdfd96, #f1c40f);
@@ -217,11 +217,11 @@ else:
         top: 10%;
         right: 15%;
         box-shadow: 0 0 40px 12px rgba(255, 255, 200, 0.5);
-        z-index: -2; /* lebih rendah dari balon */
-    }}
+        z-index: -2;
+    }
 
     /* Card motivasi */
-    .motivation-card {{
+    .motivation-card {
         background: rgba(255, 255, 255, 0.08);
         border-radius: 20px;
         padding: 25px;
@@ -231,10 +231,10 @@ else:
         text-align: center;
         font-size: 18px;
         line-height: 1.6;
-    }}
+    }
 
     /* Judul glow */
-    .glow-text {{
+    .glow-text {
         font-size: 22px;
         font-weight: bold;
         color: #fff;
@@ -242,7 +242,7 @@ else:
         text-shadow: 0 0 10px #fff,
                      0 0 20px #4facfe,
                      0 0 30px #00f2fe;
-    }}
+    }
     </style>
 
     <div class="stars"></div>
@@ -250,9 +250,10 @@ else:
     <div class="aurora"></div>
     """
 
+    night_bg = night_bg_template.format(box_shadow_css=box_shadow_css)
     st.markdown(night_bg, unsafe_allow_html=True)
 
-    # Balon bawaan Streamlit (sekarang akan muncul lagi 🎈)
+    # Balon bawaan Streamlit
     st.balloons()
 
     # Pesan akhir
@@ -273,4 +274,3 @@ else:
         """,
         unsafe_allow_html=True
     )
-

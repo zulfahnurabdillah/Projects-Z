@@ -137,20 +137,139 @@ if index < total:
             st.session_state.answered = False  # reset untuk soal berikut
 
 else:
-    # Selesai semua soal
+    import random
+
+    # Generate bintang statis
+    NUM_STARS = 120
+    shadows = []
+    for _ in range(NUM_STARS):
+        x = round(random.uniform(1, 99), 2)
+        y = round(random.uniform(1, 99), 2)
+        spread = random.choice([0, 1])
+        opacity = round(random.uniform(0.6, 1.0), 2)
+        shadows.append(f"{x}vw {y}vh 0 {spread}px rgba(255,255,255,{opacity})")
+
+    box_shadow_css = ",\n            ".join(shadows)
+
+    night_bg = f"""
+    <style>
+    .stApp {{
+        position: relative;
+        background: linear-gradient(to bottom, #0d1b2a, #1b263b, #0d1b2a);
+        color: #ffffff;
+        font-family: "Segoe UI", sans-serif;
+        overflow: hidden;
+    }}
+
+    /* Aurora lebih jelas di bagian atas */
+    .aurora {{
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background: radial-gradient(circle at 50% 0%,
+            rgba(0, 255, 150, 0.35),
+            rgba(180, 0, 255, 0.25),
+            rgba(0, 200, 255, 0.2),
+            transparent 70%
+        );
+        background-size: 400% 400%;
+        animation: aurora 18s ease-in-out infinite;
+        z-index: -2; /* lebih rendah dari balon */
+    }}
+
+    @keyframes aurora {{
+        0%   {{ background-position: 0% 50%; }}
+        50%  {{ background-position: 100% 50%; }}
+        100% {{ background-position: 0% 50%; }}
+    }}
+
+    /* Pastikan konten tetap di atas */
+    .stApp > div {{
+        position: relative;
+        z-index: 1;
+    }}
+
+    /* Bintang */
+    .stars {{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 1px;
+        background: transparent;
+        border-radius: 50%;
+        box-shadow: {box_shadow_css};
+        filter: blur(0.2px);
+        opacity: 0.95;
+        z-index: -2; /* lebih rendah dari balon */
+    }}
+
+    /* Bulan */
+    .moon {{
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle at 30% 30%, #fdfd96, #f1c40f);
+        border-radius: 50%;
+        position: fixed;
+        top: 10%;
+        right: 15%;
+        box-shadow: 0 0 40px 12px rgba(255, 255, 200, 0.5);
+        z-index: -2; /* lebih rendah dari balon */
+    }}
+
+    /* Card motivasi */
+    .motivation-card {{
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 25px;
+        margin-top: 20px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.6;
+    }}
+
+    /* Judul glow */
+    .glow-text {{
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #4facfe,
+                     0 0 30px #00f2fe;
+    }}
+    </style>
+
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="aurora"></div>
+    """
+
+    st.markdown(night_bg, unsafe_allow_html=True)
+
+    # Balon bawaan Streamlit (sekarang akan muncul lagi 🎈)
     st.balloons()
+
+    # Pesan akhir
     st.success("Horeee! Kamu sudah jawab semua tebak-tebakan 🎉✨")
     st.write(f"Skor akhir kamu: **{st.session_state.score} / {total}** 💯")
 
-    # Pesan semangat di akhir
     st.markdown(
         """
-        ---
-        ### 🌸 A Little Motivation for You, Zalfa 🌸
-        Life may sometimes knock you down and leave scars,  
-        but don’t forget, you are strong 💪 and truly precious ✨.  
-        Keep smiling, keep your spirit alive, and most importantly: **Keep Living** ❤️  
-        Because the world is a brighter place with you in it. 🌍💖
+        <div class="motivation-card">
+            <div class="glow-text">🌸 A Little Motivation for You, Zalfa 🌸</div>
+            <p>
+                Life may sometimes knock you down and leave scars,<br>
+                but don’t forget, you are strong 💪 and truly precious ✨.<br>
+                Keep smiling, keep your spirit alive, and most importantly: <b>Keep Living</b> ❤️<br>
+                Because the world is a brighter place with you in it. 🌍💖
+            </p>
+        </div>
         """,
         unsafe_allow_html=True
     )

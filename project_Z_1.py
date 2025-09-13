@@ -1,4 +1,5 @@
 import streamlit as st
+import random
 
 st.set_page_config(page_title="For you :)", page_icon="🐻", layout="centered")
 
@@ -137,7 +138,6 @@ if index < total:
             st.session_state.answered = False  # reset untuk soal berikut
 
 else:
-    import random
 
     # Generate bintang statis
     NUM_STARS = 120
@@ -273,3 +273,4 @@ else:
         """,
         unsafe_allow_html=True
     )
+

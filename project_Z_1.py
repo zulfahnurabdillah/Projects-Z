@@ -7,39 +7,39 @@ st.set_page_config(page_title="For you :)", page_icon="🐻", layout="centered")
 page_bg = """
 <style>
 /* Background gradien biru langit */
-.stApp {
+.stApp {{
     background: linear-gradient(135deg, #a2d2ff, #cdb4db);
     color: #1e1e1e;
     font-family: "Segoe UI", sans-serif;
-}
+}}
 
 /* Animasi fade-in */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeIn {{
+    from {{ opacity: 0; transform: translateY(10px); }}
+    to {{ opacity: 1; transform: translateY(0); }}
+}}
 
-.fade-in {
+.fade-in {{
     animation: fadeIn 0.8s ease-in-out;
-}
+}}
 
 /* Card style */
-.question-box {
+.question-box {{
     background-color: rgba(255, 255, 255, 0.92);
     padding: 20px;
     border-radius: 20px;
     box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
     margin-bottom: 20px;
-}
+}}
 
 /* Judul pertanyaan */
-.question-box h3 {
+.question-box h3 {{
     color: #2d6eb5;
     margin-bottom: 10px;
-}
+}}
 
 /* Tombol custom */
-div.stButton > button:first-child {
+div.stButton > button:first-child {{
     background-color: #4a90e2;
     color: white;
     border-radius: 12px;
@@ -48,12 +48,12 @@ div.stButton > button:first-child {
     border: none;
     box-shadow: 1px 3px 6px rgba(0,0,0,0.2);
     transition: all 0.3s ease-in-out;
-}
+}}
 
-div.stButton > button:first-child:hover {
+div.stButton > button:first-child:hover {{
     background-color: #2d6eb5;
     transform: scale(1.05);
-}
+}}
 </style>
 """
 st.markdown(page_bg, unsafe_allow_html=True)
@@ -66,25 +66,18 @@ st.write("Allooo Zalfa, aku punya game tebak-tebakan nihh buat kamu. Coba jawab 
 tebakan_list = [
     ("Aku punya topi koboi, temanku Buzz Lightyear, tapi sekarang aku jadi boneka kesayanganmu. Siapa aku?",
      "woody", "Good job!!, emang kmu paling sayang sama Woody yaa, tiatii klo malem diliatin wkwkk 🤠"),
-
     ("Aku robot putih gembul, suka bilang 'Ba-la-la-la~'. Siapa aku?",
      "baymax", "Yee bener, Baymax yang gendut gemes kayak kamu kalau lagi peluk boneka 🤭"),
-
     ("Aku bulu-buluan, suka ngeong, suka manjain kamu, dan namaku warna langit. Siapa aku?",
      "blue", "Iyaa, Blue kucing kesayangan kamu😺, btw namanya grey ngga si harusnyaa -_-"),
-
     ("Aku bikin perih, bikin sakit, tapi juga bukti kamu kuat bisa bangkit lagi. Aku apa?",
      "luka", "yapp bener, hayoo Siapa yg kemaren abiss jatohh? Orang ko hobinya jatoh, but anyway GWS YAAA..💪"),
-
     ("Aku datang diam-diam, bikin hati berat, kadang bikin air mata jatuh. Aku siapa?",
      "sedih", "True, tapi inget Zalfa, aku selalu ada buat bikin kamu bahagia lagii 😊, ahahahh candaa"),
-
     ("Kalau bunga itu mawar, kalau bintang itu rembulan, kalau gadis cantik dan baik hati itu siapa?",
      "zalfa", "Hehe jelas jawabannya kamu, Zalfa yang cantik dan baik hati✨, sejujurnya berat sii ngetik bagian ini wkwkk"),
-
     ("Aku kadang datang dari orang yang salah, bikin hati remuk, tapi juga ngajarin kamu buat lebih kuat. Aku apa?",
      "sakit hati", "Yaa, tapi sekarang semoga nggak ada yang berani nyakitin kamu lagi yaa, semangatt💖"),
-
     ("Aku nggak kelihatan, tapi bisa bikin kamu bangun tiap pagi, bikin kamu tetap bertahan. Aku apa?",
      "semangat", "Betul! Walaupun kmu banyak masalahnyaa tapii kmuu bisa tetap semangatt dan ceriaa it's impressive tho🔥"),
 ]
@@ -105,7 +98,7 @@ if index < total:
     pertanyaan, jawaban, respon = tebakan_list[index]
 
     # Progress bar + caption
-    progress = int((index / total) * 100)
+    progress = index / total
     st.progress(progress)
     st.caption(f"Progress: {index}/{total} pertanyaan selesai")
 
@@ -153,16 +146,16 @@ else:
 
     night_bg_template = """
     <style>
-    .stApp {
+    .stApp {{
         position: relative;
         background: linear-gradient(to bottom, #0d1b2a, #1b263b, #0d1b2a);
         color: #ffffff;
         font-family: "Segoe UI", sans-serif;
         overflow: hidden;
-    }
+    }}
 
     /* Aurora */
-    .aurora {
+    .aurora {{
         content: "";
         position: fixed;
         top: 0;
@@ -178,22 +171,22 @@ else:
         background-size: 400% 400%;
         animation: aurora 18s ease-in-out infinite;
         z-index: -2;
-    }
+    }}
 
-    @keyframes aurora {
-        0%   { background-position: 0% 50%; }
-        50%  { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+    @keyframes aurora {{
+        0%   {{ background-position: 0% 50%; }}
+        50%  {{ background-position: 100% 50%; }}
+        100% {{ background-position: 0% 50%; }}
+    }}
 
     /* Pastikan konten tetap di atas */
-    .stApp > div {
+    .stApp > div {{
         position: relative;
         z-index: 1;
-    }
+    }}
 
     /* Bintang */
-    .stars {
+    .stars {{
         position: fixed;
         top: 0;
         left: 0;
@@ -205,10 +198,10 @@ else:
         filter: blur(0.2px);
         opacity: 0.95;
         z-index: -2;
-    }
+    }}
 
     /* Bulan */
-    .moon {
+    .moon {{
         width: 120px;
         height: 120px;
         background: radial-gradient(circle at 30% 30%, #fdfd96, #f1c40f);
@@ -218,10 +211,10 @@ else:
         right: 15%;
         box-shadow: 0 0 40px 12px rgba(255, 255, 200, 0.5);
         z-index: -2;
-    }
+    }}
 
     /* Card motivasi */
-    .motivation-card {
+    .motivation-card {{
         background: rgba(255, 255, 255, 0.08);
         border-radius: 20px;
         padding: 25px;
@@ -231,10 +224,10 @@ else:
         text-align: center;
         font-size: 18px;
         line-height: 1.6;
-    }
+    }}
 
     /* Judul glow */
-    .glow-text {
+    .glow-text {{
         font-size: 22px;
         font-weight: bold;
         color: #fff;
@@ -242,7 +235,7 @@ else:
         text-shadow: 0 0 10px #fff,
                      0 0 20px #4facfe,
                      0 0 30px #00f2fe;
-    }
+    }}
     </style>
 
     <div class="stars"></div>

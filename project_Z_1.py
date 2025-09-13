@@ -7,11 +7,21 @@ st.set_page_config(page_title="For you :)", page_icon="🐻", layout="centered")
 # ====== CSS CUSTOM ======
 page_bg = """
 <style>
-/* Background gradien biru langit */
+/* Background gradien animasi */
 .stApp {
-    background: linear-gradient(135deg, #a2d2ff, #cdb4db);
+    background: linear-gradient(270deg, #a2d2ff, #cdb4db, #ffc8dd, #bde0fe);
+    background-size: 600% 600%;
+    animation: gradientShift 18s ease infinite;
     color: #1e1e1e;
     font-family: "Segoe UI", sans-serif;
+    overflow: hidden; /* supaya bubble tidak keluar area */
+}
+
+/* Animasi pergeseran background */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Animasi fade-in */
@@ -24,13 +34,21 @@ page_bg = """
     animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Card style */
+/* Card style dengan glow */
 .question-box {
     background-color: rgba(255, 255, 255, 0.92);
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 0 12px rgba(74,144,226,0.3);
     margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 2; /* supaya tidak ketutupan bubble */
+}
+
+.question-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(74,144,226,0.6);
 }
 
 /* Judul pertanyaan */
@@ -47,15 +65,53 @@ div.stButton > button:first-child {
     padding: 10px 24px;
     font-weight: bold;
     border: none;
-    box-shadow: 1px 3px 6px rgba(0,0,0,0.2);
+    box-shadow: 1px 3px 6px rgba(0,0,0,0.25);
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 
 div.stButton > button:first-child:hover {
     background-color: #2d6eb5;
-    transform: scale(1.05);
+    transform: scale(1.08);
+    box-shadow: 0 0 12px rgba(45,110,181,0.6);
 }
+
+/* ====== Bubble Animasi ====== */
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: rise 20s infinite ease-in;
+    z-index: 1;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(0.8); opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-1200px) scale(1.2); opacity: 0; }
+}
+
+/* Variasi bubble */
+.bubble:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-duration: 18s; }
+.bubble:nth-child(2) { left: 25%; width: 25px; height: 25px; animation-duration: 12s; }
+.bubble:nth-child(3) { left: 40%; width: 30px; height: 30px; animation-duration: 15s; }
+.bubble:nth-child(4) { left: 55%; width: 50px; height: 50px; animation-duration: 22s; }
+.bubble:nth-child(5) { left: 70%; width: 20px; height: 20px; animation-duration: 10s; }
+.bubble:nth-child(6) { left: 85%; width: 35px; height: 35px; animation-duration: 17s; }
+.bubble:nth-child(7) { left: 90%; width: 45px; height: 45px; animation-duration: 25s; }
 </style>
+
+<!-- Tambahkan elemen bubble -->
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
@@ -274,6 +330,7 @@ else:
         """,
         unsafe_allow_html=True
     )
+
 
 
 

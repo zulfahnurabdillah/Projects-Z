@@ -66,7 +66,7 @@ st.write("Allooo Zalfa, aku punya game tebak-tebakan nihh buat kamu. Coba jawab 
 # ====== Daftar Tebakan ======
 tebakan_list = [
     ("Aku punya topi koboi, temanku Buzz Lightyear, tapi sekarang aku jadi boneka kesayanganmu. Siapa aku?",
-     "woody🤠", "Good job!!, emang kmu paling sayang sama Woody yaa, tiatii klo malem diliatin wkwkk 😆"),
+     "woody", "Good job!!, emang kmu paling sayang sama Woody yaa, tiatii klo malem diliatin wkwkk 😆"),
 
     ("Aku robot putih gembul, suka bilang 'Ba-la-la-la~'. Siapa aku?",
      "baymax", "Yee bener, Baymax yang gendut gemes kayak kamu kalau lagi peluk boneka 😝"),
@@ -274,4 +274,5 @@ else:
         """,
         unsafe_allow_html=True
     )
+
 

@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import random
 
 st.set_page_config(page_title="For you :)", page_icon="🐻", layout="centered")
@@ -7,39 +8,39 @@ st.set_page_config(page_title="For you :)", page_icon="🐻", layout="centered")
 page_bg = """
 <style>
 /* Background gradien biru langit */
-.stApp {{
+.stApp {
     background: linear-gradient(135deg, #a2d2ff, #cdb4db);
     color: #1e1e1e;
     font-family: "Segoe UI", sans-serif;
-}}
+}
 
 /* Animasi fade-in */
-@keyframes fadeIn {{
-    from {{ opacity: 0; transform: translateY(10px); }}
-    to {{ opacity: 1; transform: translateY(0); }}
-}}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-.fade-in {{
+.fade-in {
     animation: fadeIn 0.8s ease-in-out;
-}}
+}
 
 /* Card style */
-.question-box {{
+.question-box {
     background-color: rgba(255, 255, 255, 0.92);
     padding: 20px;
     border-radius: 20px;
     box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
     margin-bottom: 20px;
-}}
+}
 
 /* Judul pertanyaan */
-.question-box h3 {{
+.question-box h3 {
     color: #2d6eb5;
     margin-bottom: 10px;
-}}
+}
 
 /* Tombol custom */
-div.stButton > button:first-child {{
+div.stButton > button:first-child {
     background-color: #4a90e2;
     color: white;
     border-radius: 12px;
@@ -48,12 +49,12 @@ div.stButton > button:first-child {{
     border: none;
     box-shadow: 1px 3px 6px rgba(0,0,0,0.2);
     transition: all 0.3s ease-in-out;
-}}
+}
 
-div.stButton > button:first-child:hover {{
+div.stButton > button:first-child:hover {
     background-color: #2d6eb5;
     transform: scale(1.05);
-}}
+}
 </style>
 """
 st.markdown(page_bg, unsafe_allow_html=True)
@@ -66,18 +67,25 @@ st.write("Allooo Zalfa, aku punya game tebak-tebakan nihh buat kamu. Coba jawab 
 tebakan_list = [
     ("Aku punya topi koboi, temanku Buzz Lightyear, tapi sekarang aku jadi boneka kesayanganmu. Siapa aku?",
      "woody", "Good job!!, emang kmu paling sayang sama Woody yaa, tiatii klo malem diliatin wkwkk 🤠"),
+
     ("Aku robot putih gembul, suka bilang 'Ba-la-la-la~'. Siapa aku?",
      "baymax", "Yee bener, Baymax yang gendut gemes kayak kamu kalau lagi peluk boneka 🤭"),
+
     ("Aku bulu-buluan, suka ngeong, suka manjain kamu, dan namaku warna langit. Siapa aku?",
      "blue", "Iyaa, Blue kucing kesayangan kamu😺, btw namanya grey ngga si harusnyaa -_-"),
+
     ("Aku bikin perih, bikin sakit, tapi juga bukti kamu kuat bisa bangkit lagi. Aku apa?",
-     "luka", "yapp bener, hayoo Siapa yg kemaren abiss jatohh? Orang ko hobinya jatoh, but anyway GWS YAAA..💪"),
+     "luka", " yapp bener, hayoo Siapa yg kemaren abiss jatohh? Orang ko hobinya jatoh, but anyway GWS YAAA..💪"),
+
     ("Aku datang diam-diam, bikin hati berat, kadang bikin air mata jatuh. Aku siapa?",
      "sedih", "True, tapi inget Zalfa, aku selalu ada buat bikin kamu bahagia lagii 😊, ahahahh candaa"),
+
     ("Kalau bunga itu mawar, kalau bintang itu rembulan, kalau gadis cantik dan baik hati itu siapa?",
      "zalfa", "Hehe jelas jawabannya kamu, Zalfa yang cantik dan baik hati✨, sejujurnya berat sii ngetik bagian ini wkwkk"),
+
     ("Aku kadang datang dari orang yang salah, bikin hati remuk, tapi juga ngajarin kamu buat lebih kuat. Aku apa?",
      "sakit hati", "Yaa, tapi sekarang semoga nggak ada yang berani nyakitin kamu lagi yaa, semangatt💖"),
+
     ("Aku nggak kelihatan, tapi bisa bikin kamu bangun tiap pagi, bikin kamu tetap bertahan. Aku apa?",
      "semangat", "Betul! Walaupun kmu banyak masalahnyaa tapii kmuu bisa tetap semangatt dan ceriaa it's impressive tho🔥"),
 ]
@@ -97,10 +105,9 @@ total = len(tebakan_list)
 if index < total:
     pertanyaan, jawaban, respon = tebakan_list[index]
 
-    # Progress bar + caption
-    progress = index / total
-    st.progress(progress)
-    st.caption(f"Progress: {index}/{total} pertanyaan selesai")
+    # Progress bar
+    progress = int((index / total) * 100)
+    st.progress(progress, text=f"Progress: {index}/{total} pertanyaan selesai")
 
     # Pertanyaan dalam card + fade-in animasi
     st.markdown(
@@ -120,18 +127,19 @@ if index < total:
         if jawaban_input.strip().lower() == jawaban:
             st.success(respon)
             st.session_state.score += 1
-            st.session_state.answered = True
+            st.session_state.answered = True   # tandai sudah benar
         else:
-            st.error("TETOTTT!!! Salahh 😅 coba lagi ya!")
-            st.session_state.answered = False
+            st.error("TETOTTT!!! Salahh 😅 coba lagi ya!")  
+            st.session_state.answered = False  # masih salah
 
     # Tombol next hanya aktif kalau jawaban sudah benar
     if st.session_state.answered:
         if st.button("➡️ Next"):
             st.session_state.index += 1
-            st.session_state.answered = False
+            st.session_state.answered = False  # reset untuk soal berikut
 
 else:
+
     # Generate bintang statis
     NUM_STARS = 120
     shadows = []
@@ -144,7 +152,7 @@ else:
 
     box_shadow_css = ",\n            ".join(shadows)
 
-    night_bg_template = """
+    night_bg = f"""
     <style>
     .stApp {{
         position: relative;
@@ -154,7 +162,7 @@ else:
         overflow: hidden;
     }}
 
-    /* Aurora */
+    /* Aurora lebih jelas di bagian atas */
     .aurora {{
         content: "";
         position: fixed;
@@ -170,7 +178,7 @@ else:
         );
         background-size: 400% 400%;
         animation: aurora 18s ease-in-out infinite;
-        z-index: -2;
+        z-index: -2; /* lebih rendah dari balon */
     }}
 
     @keyframes aurora {{
@@ -197,7 +205,7 @@ else:
         box-shadow: {box_shadow_css};
         filter: blur(0.2px);
         opacity: 0.95;
-        z-index: -2;
+        z-index: -2; /* lebih rendah dari balon */
     }}
 
     /* Bulan */
@@ -210,7 +218,7 @@ else:
         top: 10%;
         right: 15%;
         box-shadow: 0 0 40px 12px rgba(255, 255, 200, 0.5);
-        z-index: -2;
+        z-index: -2; /* lebih rendah dari balon */
     }}
 
     /* Card motivasi */
@@ -243,10 +251,9 @@ else:
     <div class="aurora"></div>
     """
 
-    night_bg = night_bg_template.format(box_shadow_css=box_shadow_css)
     st.markdown(night_bg, unsafe_allow_html=True)
 
-    # Balon bawaan Streamlit
+    # Balon bawaan Streamlit (sekarang akan muncul lagi 🎈)
     st.balloons()
 
     # Pesan akhir

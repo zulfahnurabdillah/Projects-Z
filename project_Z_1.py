@@ -66,10 +66,10 @@ st.write("Allooo Zalfa, aku punya game tebak-tebakan nihh buat kamu. Coba jawab 
 # ====== Daftar Tebakan ======
 tebakan_list = [
     ("Aku punya topi koboi, temanku Buzz Lightyear, tapi sekarang aku jadi boneka kesayanganmu. Siapa aku?",
-     "woody", "Good job!!, emang kmu paling sayang sama Woody yaa, tiatii klo malem diliatin wkwkk 😆"),
+     "woody", "Good job!!, woody boneka paling deket sama kmuu yaa, tiatii klo malem diliatin wkwkk 😆"),
 
     ("Aku robot putih gembul, suka bilang 'Ba-la-la-la~'. Siapa aku?",
-     "baymax", "Yee bener, Baymax yang gendut gemes kayak kamu kalau lagi peluk boneka 😝"),
+     "baymax", "Yee bener, Baymax yang gendut kayak kamu kalau lagi peluk boneka 😝"),
 
     ("Aku bulu-buluan, suka ngeong, suka manjain kamu, dan namaku warna langit. Siapa aku?",
      "blue", "Iyaa, Blue kucing kesayangan kamu😺, btw namanya grey ngga si harusnyaa -_-"),
@@ -78,7 +78,7 @@ tebakan_list = [
      "luka", " yapp bener, hayoo Siapa yg kemaren abiss jatohh? Orang ko hobinya jatoh, but anyway GWS YAAA..💪."),
 
     ("Aku datang diam-diam, bikin hati berat, kadang bikin air mata jatuh. Aku siapa?",
-     "sedih", "True, tapi inget Zalfa, aku selalu ada buat bikin kamu bahagia lagii 😹, ahahahh candaa"),
+     "sedih", "True, tapi inget Zalfa, aku selalu ada buat bikin kamu bahagia lagii 😹, ahahahh candaa, gelii bangett anjirr"),
 
     ("Kalau bunga itu mawar, kalau bintang itu rembulan, kalau gadis cantik dan baik hati itu siapa?",
      "zalfa", "Hehe jelas jawabannya kamu, Zalfa yang cantik dan baik hati✨, sejujurnya berat sii ngetik bagian ini hahahh"),
@@ -263,7 +263,7 @@ else:
     st.markdown(
         """
         <div class="motivation-card">
-            <div class="glow-text">🌸 A Little Motivation for You, Zalfa 🌸</div>
+            <div class="glow-text">🌸😝For Zalfa Who's Too Cute to Handle😝🌸</div>
             <p>
                 Life may sometimes knock you down and leave scars,<br>
                 but don’t forget, you are strong 💪 and truly precious ✨.<br>
@@ -274,5 +274,6 @@ else:
         """,
         unsafe_allow_html=True
     )
+
 
 

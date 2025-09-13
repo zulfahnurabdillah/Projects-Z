@@ -66,28 +66,28 @@ st.write("Allooo Zalfa, aku punya game tebak-tebakan nihh buat kamu. Coba jawab 
 # ====== Daftar Tebakan ======
 tebakan_list = [
     ("Aku punya topi koboi, temanku Buzz Lightyear, tapi sekarang aku jadi boneka kesayanganmu. Siapa aku?",
-     "woody", "Good job!!, emang kmu paling sayang sama Woody yaa, tiatii klo malem diliatin wkwkk 🤠"),
+     "woody🤠", "Good job!!, emang kmu paling sayang sama Woody yaa, tiatii klo malem diliatin wkwkk 😆"),
 
     ("Aku robot putih gembul, suka bilang 'Ba-la-la-la~'. Siapa aku?",
-     "baymax", "Yee bener, Baymax yang gendut gemes kayak kamu kalau lagi peluk boneka 🤭"),
+     "baymax", "Yee bener, Baymax yang gendut gemes kayak kamu kalau lagi peluk boneka 😝"),
 
     ("Aku bulu-buluan, suka ngeong, suka manjain kamu, dan namaku warna langit. Siapa aku?",
      "blue", "Iyaa, Blue kucing kesayangan kamu😺, btw namanya grey ngga si harusnyaa -_-"),
 
     ("Aku bikin perih, bikin sakit, tapi juga bukti kamu kuat bisa bangkit lagi. Aku apa?",
-     "luka", " yapp bener, hayoo Siapa yg kemaren abiss jatohh? Orang ko hobinya jatoh, but anyway GWS YAAA..💪"),
+     "luka", " yapp bener, hayoo Siapa yg kemaren abiss jatohh? Orang ko hobinya jatoh, but anyway GWS YAAA..💪."),
 
     ("Aku datang diam-diam, bikin hati berat, kadang bikin air mata jatuh. Aku siapa?",
-     "sedih", "True, tapi inget Zalfa, aku selalu ada buat bikin kamu bahagia lagii 😊, ahahahh candaa"),
+     "sedih", "True, tapi inget Zalfa, aku selalu ada buat bikin kamu bahagia lagii 😹, ahahahh candaa"),
 
     ("Kalau bunga itu mawar, kalau bintang itu rembulan, kalau gadis cantik dan baik hati itu siapa?",
-     "zalfa", "Hehe jelas jawabannya kamu, Zalfa yang cantik dan baik hati✨, sejujurnya berat sii ngetik bagian ini wkwkk"),
+     "zalfa", "Hehe jelas jawabannya kamu, Zalfa yang cantik dan baik hati✨, sejujurnya berat sii ngetik bagian ini hahahh"),
 
     ("Aku kadang datang dari orang yang salah, bikin hati remuk, tapi juga ngajarin kamu buat lebih kuat. Aku apa?",
-     "sakit hati", "Yaa, tapi sekarang semoga nggak ada yang berani nyakitin kamu lagi yaa, semangatt💖"),
+     "sakit hati", "Yaapp tull!!, tapi sekarang semoga nggak ada yang berani nyakitin kamu lagi yaa, semangatt💖"),
 
     ("Aku nggak kelihatan, tapi bisa bikin kamu bangun tiap pagi, bikin kamu tetap bertahan. Aku apa?",
-     "semangat", "Betul! Walaupun kmu banyak masalahnyaa tapii kmuu bisa tetap semangatt dan ceriaa it's impressive tho🔥"),
+     "semangat", "Betul! Walaupun kmuu banyak masalahnyaa tapii kmuu bisa tetap semangatt dan ceriaa it's amazingg tho🔥"),
 ]
 
 # ====== State ======
@@ -274,3 +274,4 @@ else:
         """,
         unsafe_allow_html=True
     )
+
